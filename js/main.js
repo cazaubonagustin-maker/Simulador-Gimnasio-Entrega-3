@@ -75,3 +75,63 @@ function mostrarResumen(cantidad, minutos, horas) {
 }
 mostrarResumen(cantidadEntrenamientos, minutosTotales, horasEntrenadas);
 
+
+// Lista de ejercicios disponibles en nuestro gimnasio
+const ejercicios = [
+    "Sentadillas",
+    "Flexiones",
+    "Abdominales",
+    "Dominadas",
+    "Plancha"
+];
+// Agregamos un ejercicio al final de la lista
+ejercicios.push("Burpees");
+
+console.log("Ejercicios después de agregar Burpees:", ejercicios);
+
+// Agregamos un ejercicio prioritario al principio de la lista
+ejercicios.unshift("Calentamiento");
+
+console.log("Ejercicios después de agregar Calentamiento:", ejercicios);
+
+// Eliminamos el último ejercicio de la lista
+const ejercicioEliminado = ejercicios.pop();
+
+// Buscamos un ejercicio dentro de la lista
+const respuestaBusqueda = prompt("¿Qué ejercicio querés buscar?");
+const ejercicioBuscado = respuestaBusqueda === null ? "" : respuestaBusqueda.trim();
+
+const ejerciciosMinusculas = ejercicios.map(ejercicio => ejercicio.toLowerCase());
+const busquedaMinusculas = ejercicioBuscado.toLowerCase();
+
+if (ejerciciosMinusculas.includes(busquedaMinusculas)) {
+    const posicion = ejerciciosMinusculas.indexOf(busquedaMinusculas);
+
+    console.log("El ejercicio " + ejercicios[posicion] +
+        " está en la posición " + posicion + ".");
+} else if (ejercicioBuscado === "") {
+    console.log("No ingresaste ningún ejercicio para buscar.");
+} else {
+    console.log("El ejercicio " + ejercicioBuscado +
+        " no está en la lista.");
+}
+
+console.log("Se ha eliminado el elemento: " + ejercicioEliminado);
+
+// Reemplazamos un ejercicio utilizando su índice
+ejercicios.splice(3, 1, "Estocadas");
+
+console.log("Ejercicios después del reemplazo:", ejercicios);
+
+// Función para mostrar todos los ejercicios del gimnasio
+function mostrarEjercicios(lista) {
+    console.log("--- LISTA DE EJERCICIOS DEL GIMNASIO ---");
+
+    for (const ejercicio of lista) {
+        console.log("Ejercicio: " + ejercicio);
+    }
+
+    console.log("Total de ejercicios: " + lista.length);
+}
+
+mostrarEjercicios(ejercicios);
